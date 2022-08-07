@@ -28,12 +28,12 @@ def wish2(request):
     h=int(date.strftime('%H'))
     print('h',h)
     if h<12:
-        msg='Hello Guest !!!! Very Very Good Morning!!!'
+        msg='Hello Guest !!!! Very Very Good Morning from Ashok!!!'
     elif h<16:
-        msg='Hello Guest !!!! Very Very Good AfterNoon!!!'
+        msg='Hello Guest !!!! Very Very Good AfterNoon from Ashok!!!'
     elif h<21:
-        msg='Hello Guest !!!! Very Very Good Evening!!!'
+        msg='Hello Guest !!!! Very Very Good Evening from Ashok!!!'
     else:
-        msg='Hello Guest !!!! Very Very Good Night!!!'
+        msg='Hello Guest !!!! Very Very Good Night from Ashok!!!'
     my_dict={'insert_date':date,'insert_msg':msg}
     return render(request,'testApp/wish2.html',context=my_dict)
