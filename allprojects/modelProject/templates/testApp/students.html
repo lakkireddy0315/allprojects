@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html lang="en" dir="ltr"> 
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
+</head> 
+<body> 
+{%if student_list %} 
+<table border="1" margin='auto'> 
+ <thead> 
+ <th>NAME</th> 
+ <th>MARKS</th> 
+ </thead> 
+ {% for student in student_list %} 
+ <tr> 
+ <td>{{student.name}}</td> 
+ <td>{{student.marks}}</td> 
+ </tr> 
+ {% endfor %} 
+ </table> 
+ {% else %} 
+ <p>No Studetns found</p> 
+ {% endif %} 
+ </body> 
+ </html> 

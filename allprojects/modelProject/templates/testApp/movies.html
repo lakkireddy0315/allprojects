@@ -1,0 +1,13 @@
+<!DOCTYPE html> 
+{%extends 'testApp/base.html'%} 
+{% block body_block %} 
+<h1>Movies Information</h1><hr> 
+{%load cust_filters%} 
+<ul> 
+<li>{{msg1|lower}}</li> 
+<li>{{msg2|upper}}</li> 
+<li>{{msg3|add:"--Durga"}}</li> 
+ <li>{{msg4|f8upper}}</li> 
+ <li>{{msg5}}</li> 
+ </ul> 
+ {%endblock%} 

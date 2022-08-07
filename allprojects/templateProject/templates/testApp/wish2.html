@@ -1,0 +1,22 @@
+<!DOCTYPE html> 
+{% load static %} 
+<html lang="en" dir="ltr"> 
+<head> 
+<meta charset="utf-8"> 
+<title>First Template Page</title> 
+<style > 
+#h11{ 
+color:red; 
+ } 
+ #h12{ 
+ color:green; 
+ } 
+ </style> 
+ </head> 
+ <body> 
+ <h1 id=h11>{{insert_msg}}</h1> 
+ <h1 id=h12>Current Date and Time : {{insert_date}}</h1> 
+ <h1>This climate preferable image is:</h1> 
+ <img src="{% static "images/god.jpg" %}" alt=""> 
+ </body> 
+ </html> 
