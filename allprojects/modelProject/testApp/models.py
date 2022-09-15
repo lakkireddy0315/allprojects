@@ -12,6 +12,10 @@ from django.utils import timezone
 class Teacher(models.Model): # TEACHER
 	name = models.CharField(max_length=100)
 	ID = models.IntergerField()'''
+
+class Members(models.Model):
+	firstname = models.CharField(max_length=255)
+	lastname = models.CharField(max_length=255)
 #abstract model class
 class ContactInfo(models.Model):
     name = models.CharField(max_length=30)

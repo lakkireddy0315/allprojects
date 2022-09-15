@@ -52,6 +52,9 @@ admin.site.register(ProxyEmployee2,ProxyEmployee2Admin)
 
 class EmployeeAdmin(admin.ModelAdmin):
     list_display=['eno','ename','esal','eaddr']
+    list_filter=('eno','id')
+    search_fields=('eno',)
+    ordering=('id',)
 admin.site.register(Employee,EmployeeAdmin)
 
 '''class StudentAdmin(admin.ModelAdmin):

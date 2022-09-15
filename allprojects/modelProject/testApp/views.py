@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from testApp import forms
 #from testApp.forms import StudentForm
 from testApp.forms import FeedbackForm,SignupForm
-from testApp.models import Movie
+from testApp.models import Movie,Members
 from testApp.forms import MovieForm
 from testApp.forms import ItemAddForm,SignUpForm
 from django.contrib.auth.decorators import login_required
@@ -19,11 +19,32 @@ from testApp.forms import EmailSendForm
 from django.core.mail import send_mail
 from testApp.forms import EmployeeForm
 from testApp.models import Employee,Post
-
+from django.db.models import Avg,Max,Min,Sum,Count
+from django.template import loader
 # Create your views here.
 
+def index1(request):
+	#template=loader.get_template('testApp/myfirst.html')
+	return render(request,'testApp/myfirst.html')
+	#HttpResponse(template.render())
+'''def index1(request):
+	mymembers = Members.objects.all().values()
+	output = ""
+	for x in mymembers:
+		output += x["firstname"]
+	return HttpResponse(output)'''
+def display_view(request):
+		avg1=Employee.objects.all().aggregate(Avg('esal'))
+		print('avg1 ',avg1)
+		max=Employee.objects.all().aggregate(Max('esal'))
+		min=Employee.objects.all().aggregate(Min('esal'))
+		sum=Employee.objects.all().aggregate(Sum('esal'))
+		count=Employee.objects.all().aggregate(Count('esal'))
+		my_dict={'avg':avg1['esal__avg'],'max':max,'min':min,'sum':sum,'count':count}
+		return render(request,'testapp/aggregate.html',context=my_dict)
 def show_view(request):
-	employees=Employee.objects.all()
+	#employees=Employee.objects.all()
+	employees=Employee.objects.filter(esal__gte=20000).order_by('-esal')
 	return render(request,'testapp/index.html',{'employees':employees})
 
 def insert_view(request):
@@ -137,13 +158,13 @@ def welcome_view(request):
     print('This line added by view function')
     return HttpResponse('<h1>Custom Middleware Demo</h1>')
 
-def display_view(request):
+'''def display_view(request):
 # employees=Employee.objects.all()
 # employees=ProxyEmployee.objects.all()
     #employees=ProxyEmployee.objects.all()
     employees=Employee.objects.get_queryset1()
     my_dict={'employees':employees}
-    return render(request,'testapp/index.html',my_dict)
+    return render(request,'testapp/index.html',my_dict)'''
 
 class BeerListView(ListView):
     model=Beer

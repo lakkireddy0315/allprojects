@@ -21,6 +21,7 @@ from testApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('display_dtl/',views.display_view),
     path('employee_data_view/', views.employee_data_view),
     path('employee_data_jsonview/', views.employee_data_jsonview),
     url(r'^movies/', views.moviesInfo),
@@ -43,6 +44,7 @@ urlpatterns = [
     path('results/', views.results_view),
     path('age/', views.age_view),
     path('index/', views.index),
+    path('index1/', views.index1),
     path('add/', views.additem),
     path('display/', views.displayitem_view),
     path('accounts/',include('django.contrib.auth.urls')),
@@ -56,7 +58,7 @@ urlpatterns = [
     path('modelclasstest/', views.BookListView.as_view()),
     #path('BeerListView/', views.BeerListView.as_view()),
     #url(r'^$', views.BeerListView.as_view(),name='home'),
-    #url(r'^$', views.show_view,name='home'),
+    url(r'^show_view', views.show_view,name='home'),
     url(r'^$', views.post_list_view),
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<post>[-\w]+)/$', views.post_detail_view,name='post_detail'),
     url(r'^insert/', views.insert_view),
